@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="fr">
+
+<head>
+  <title>jQuery_projet_04_exercice_01</title>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/8e02a7b303.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="container-fluid bg-primary row justify-content-center p-3">
+    <h1 class="col-12 p-4 text-center">jQuery_projet_04 Exercice_01</h1>
+    <h2 class="col-9 p-4 text-center">Créer un jeu de shifumi. BONUS : Calculer le pourcentage de victoires</h2>
+    <div class="offset-1 col-10 row justify-content-center">
+      <div class="row bg-warning rounded p-2 m-2">
+        <div class="row col-12 justify-content-around">
+          <div class="border border-dark rounded">
+            <h6 class="p-3 col-12"> FAITES VOTRE CHOIX ! </h6>
+            <div class="col-12 justify-content-center">
+            <button class="btn btn-outline-secondary p-2 m-2 rock" id="1" name="button" ><i class="far fa-hand-rock"></i></button>
+            <button class="btn btn-outline-danger p-2 m-2 scissors" id="2" name="button" ><i class="far fa-hand-scissors"></i></button>
+            <button class="btn btn-outline-success p-2 m-2 paper" id="3" name="button" ><i class="far fa-hand-paper"></i></button></div>
+          </div>
+          <div class="border border-dark rounded justify-content-center row">
+            <h6 class="p-3 col-12"> LANCER CELUI DU BOT ! </h6>
+            <div class="row">
+              <button class="btn btn-outline-dark p-2 m-2" id="bot" name="button" ><i class="fas fa-laptop-code"></i></button>
+            </div>
+          </div>
+          <div>
+            <button class="btn btn-outline-dark p-2 m-2" id="check" name="button">VÉRIFIEZ LA PARTIE ! <i class="fas fa-user-check"></i></i></button>
+        </div>
+      </div>
+      </div>
+      <div class="row col-12 bg-success rounded justify-content-center text-justify">
+        <div></div>
+        <div></div>
+      </div>
+      <!-- <div class="border border-dark rounded justify-content-center row">
+        <select class="" name="choiceUser" id="select">
+          <option value="1">Pierre</option>
+          <option value="2">Feuille</option>
+          <option value="3">Ciseuax</option>
+        </select>
+        <input  value="jouer" id="button">
+      </div> -->
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.js">
+  </script >
+  <script>
+
+
+
+  $(document).ready(function() {
+    let botGame;
+    let playerGame;
+    // let rockPlayerGame = $('.rock').attr('id');
+    // let scissorsPlayerGame = $('.scissors').attr('id');
+    // let paperPlayerGame = $('.paper').attr('id');
+    let botScore = 0;
+    let playerScore = 0;
+    let numberOfGame = 0;
+
+    function getChoice(){
+      $('.color').click(function(){
+        $('.rock, .scissors, .paper').click(function(){
+          let playerGame = parseInt($(this).attr('id'));
+          console.log(playerGame);
+          return playerGame;
+        });
+    }
+
+
+    $('#bot').click(function(){
+    let botGame = Math.floor(Math.random()*4);
+    // console.log(botGame);
+    return botGame;
+    });
+
+    $('#check').click(function() {
+      getChoice();
+      let playerGame;
+      console.log(playerGame);
+      let botScore = 0;
+      let playerScore = 0;
+      let numberOfGame = 0;
+      numberOfGame++;
+
+    if(botGame == playerGame){
+
+      alert('égal');
+
+      console.log(numberOfGame);
+      alert('Votre % de réussite : ' + ((playerScore * 100) / numberOfGame ) + 'Le % de reussite du bot : ' + ((botScore * 100) / numberOfGame));
+    }
+
+    if((botGame == 1 && playerGame == 2) || (botGame == 2 && playerGame == 3)){
+      alert('bot gagne');
+      botScore++;
+      alert('Votre % de réussite : ' + ((playerScore * 100) / numberOfGame ) + 'Le % de reussite du bot : ' + ((botScore * 100) / numberOfGame));
+    }
+    if((playerGame == 1 && botGame == 2) || (playerGame == 2 && botGame == 3)){
+      alert('player gagne');
+      playerScore++;
+      alert('Votre % de réussite : ' + ((playerScore * 100) / numberOfGame ) + 'Le % de reussite du bot : ' + ((botScore * 100) / numberOfGame));
+    }
+    if(botGame == 3 && playerGame == 1){
+      alert('bot gagne');
+      botScore++;
+      alert('Votre % de réussite : ' + ((playerScore * 100) / numberOfGame ) + 'Le % de reussite du bot : ' + ((botScore * 100) / numberOfGame));
+    }
+    if(botGame == 1 && playerGame == 3){
+      alert('player gagne');
+      playerScore++;
+      alert('Votre % de réussite : ' + ((playerScore * 100) / numberOfGame ) + 'Le % de reussite du bot : ' + ((botScore * 100) / numberOfGame));
+    }
+
+    });
+
+  });
+  </script>
+</body>
+
+</html>
